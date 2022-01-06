@@ -1,51 +1,70 @@
-const path = require('path');
-const webpack = require('webpack');
-
-
-
-
-const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
-
-
-
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ESLintPlugin = require("eslint-webpack-plugin");
 
 module.exports = {
-  mode: 'development',
-
-  plugins: [new webpack.ProgressPlugin(), new WorkboxWebpackPlugin.GenerateSW({
-          swDest: 'sw.js',
-          clientsClaim: true,
-          skipWaiting: false,
-        })],
-
-  module: {
-    rules: [{
-      test: /\.(js|jsx)$/,
-      include: [path.resolve(__dirname, 'src')],
-      loader: 'babel-loader'
-    }, {
-      test: /.(sa|sc|c)ss$/,
-
-      use: [{
-        loader: "style-loader"
-      }, {
-        loader: "css-loader",
-
-        options: {
-          sourceMap: true
-        }
-      }, {
-        loader: "sass-loader",
-
-        options: {
-          sourceMap: true
-        }
-      }]
-    }]
+  mode: "development",
+  entry: "./src/index.js", // bundle's entry point
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "bundle.js",
   },
-
+  resolve: {
+    extensions: [".js", ".jsx", ".json"],
+  },
+  devtool: "source-map",
   devServer: {
     open: true,
-    host: 'localhost'
-  }
-}
+    historyApiFallback: true,
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        loader: "babel-loader",
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              sourceMap: true,
+            },
+          },
+          {
+            loader: "sass-loader",
+            options: {
+              sourceMap: true,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.svg$/i,
+        issuer: /\.[jt]sx?$/,
+        use: ["@svgr/webpack"],
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        issuer: /\.[jt]sx?$/,
+        use: [
+          {
+            loader: "file-loader",
+          },
+        ],
+      },
+    ],
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "src/index.html",
+      inject: "body",
+    }),
+    new ESLintPlugin({
+      extensions: ["js", "jsx"],
+    }),
+  ],
+};

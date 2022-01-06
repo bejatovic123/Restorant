@@ -1,0 +1,26 @@
+.layout {
+  min-height: 100vh;
+  width: 100%;
+  margin: auto;
+  box-sizing: border-box;
+  &_body {
+    margin: auto;
+  }
+  &__bottom-content-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    gap: 40px;
+    background-color: #e3e0d9;
+    padding: 60px 264px;
+    .home-card {
+      width: 280px;
+    }
+    @media screen and (max-width: 600px) {
+      display: block;
+      padding: 20px;
+      .home-card {
+        margin: auto;
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+.home {
+  &__cards-wrapper {
+    display: flex;
+    width: 80vw;
+    margin: 80px auto;
+    justify-content: center;
+    gap: 40px;
+  }
+
+  @media screen and (max-width: 600px) {
+    &__cards-wrapper {
+      display: block;
+    }
+  }
+}
