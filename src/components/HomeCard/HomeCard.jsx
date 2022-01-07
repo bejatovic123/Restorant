@@ -9,7 +9,7 @@ export const HomeCard = ({
   onButtonClick = () => {},
 }) => (
   <div className="home-card">
-    <h2>{heading}</h2>
+    {heading && <h2>{heading}</h2>}
     {image && <img src={image} alt={heading} />}
     {text && (
       <p>

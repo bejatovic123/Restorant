@@ -1,0 +1,57 @@
+.contact {
+  & > img {
+    width: 100%;
+  }
+  &__content-wrapper {
+    .home-card {
+      width: 456px;
+      max-width: 75vw;
+    }
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 80px;
+    margin: 80px auto;
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 400px;
+      max-width: 75vw;
+      gap: 18px;
+      label {
+        display: block;
+        margin-bottom: 6px;
+      }
+      input,
+      textarea {
+        height: 40px;
+        width: 100%;
+        border: 2px solid #a3a06d;
+      }
+      textarea {
+        height: 140px;
+      }
+      h3 {
+        border-bottom: 2px solid #a3a06d;
+        margin: 0;
+        padding: 12px 0;
+      }
+      button {
+        width: 120px;
+        background: white;
+        border: none;
+        border-bottom: 2px solid #75a1da;
+        box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+        padding: 12px;
+        cursor: pointer;
+        color: #75a1da;
+        font-style: italic;
+        &:hover {
+          background: #75a1da;
+          color: white;
+        }
+      }
+    }
+  }
+}
