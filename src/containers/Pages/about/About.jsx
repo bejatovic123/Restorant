@@ -2,7 +2,7 @@ import React from "react";
 import aboutBanner from "../../../assets/about-banner.jpeg";
 import foodSnap from "../../../assets/food-snap.jpg";
 
-export const About = () => {
+const About = () => {
   return (
     <>
       <img className="about__banner" src={aboutBanner} alt="about-banner" />
@@ -31,3 +31,5 @@ export const About = () => {
     </>
   );
 };
+
+export default About;

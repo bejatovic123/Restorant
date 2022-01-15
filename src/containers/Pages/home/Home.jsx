@@ -4,7 +4,7 @@ import { Slider } from "../../../components/Slider/Slider";
 import cardImage from "../../../assets/walcome_vanilla.jpeg";
 import { useNavigate } from "react-router-dom";
 
-export const Home = () => {
+const Home = () => {
   const navigate = useNavigate();
   const bodyContent = [
     {
@@ -50,3 +50,5 @@ export const Home = () => {
     </>
   );
 };
+
+export default Home;

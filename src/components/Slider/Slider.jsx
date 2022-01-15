@@ -1,16 +1,17 @@
-import React, { useCallback, useEffect, useState } from "react";
-import banner from "../../assets/banner.jpeg";
-import banner2 from "../../assets/banner2.jpeg";
-import PropTypes from "prop-types";
+import React, { useCallback, useEffect, useState } from 'react';
+import banner from '../../assets/banner.jpeg';
+import banner2 from '../../assets/banner2.jpeg';
+import PropTypes from 'prop-types';
 
+//slide
 const Slide = ({ image, currentSlideIndex, myIndex }) => {
   return (
     <div
       className={`slider__slide fade ${
-        currentSlideIndex === myIndex ? "display-unset" : ""
+        currentSlideIndex === myIndex ? 'display-unset' : ''
       }`}
     >
-      <img src={image} alt="banner" />
+      <img src={image} alt='banner' />
     </div>
   );
 };
@@ -34,11 +35,11 @@ export const Slider = ({
 
   useEffect(
     () => autoSlide && setTimeout(() => forwardSlide(), slideIntervale),
-    [autoSlide, forwardSlide, slideIntervale]
+    [autoSlide, forwardSlide, slideIntervale],
   );
 
   return (
-    <div className="slider__container">
+    <div className='slider__container'>
       {slides.map((slide, i) => (
         <Slide
           image={slide}
@@ -47,10 +48,10 @@ export const Slider = ({
           currentSlideIndex={currentSlideIndex}
         />
       ))}
-      <div className="prev" tabIndex={0} onClick={backwardSlide}>
+      <div className='prev' tabIndex={0} onClick={backwardSlide}>
         &#10094;
       </div>
-      <div className="next" tabIndex={0} onClick={forwardSlide}>
+      <div className='next' tabIndex={0} onClick={forwardSlide}>
         &#10095;
       </div>
     </div>
