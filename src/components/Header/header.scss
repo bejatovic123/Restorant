@@ -12,7 +12,7 @@
     display: flex;
     span {
       height: 140px;
-      width: 84px;
+      width: 100px;
       display: flex;
       justify-content: center;
       padding-top: 92px;
@@ -34,24 +34,28 @@
     height: 140px;
     padding: 10px;
   }
-  & > span {
+  &__right-section {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 60px;
-    & > div {
-      border: 4px solid #dad8ca;
-      color: #dad8ca;
-      border-radius: 50%;
-      width: 80px;
-      aspect-ratio: 1;
+    button {
+      margin-top: 72px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    height: 68px;
+    padding: 0 10px;
+    &__logo {
+      height: 58px;
+      padding: 0;
+    }
+    &__right-section {
+      display: none !important;
+    }
+    .burger-menu {
       display: flex;
-      align-content: center;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      font-size: 32px;
-      margin-top: 32px;
     }
   }
 }

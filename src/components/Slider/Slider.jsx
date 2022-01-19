@@ -47,12 +47,16 @@ export const Slider = ({
           currentSlideIndex={currentSlideIndex}
         />
       ))}
-      <div className="prev" tabIndex={0} onClick={backwardSlide}>
-        &#10094;
-      </div>
-      <div className="next" tabIndex={0} onClick={forwardSlide}>
-        &#10095;
-      </div>
+      {!autoSlide && (
+        <>
+          <div className="prev" tabIndex={0} onClick={backwardSlide}>
+            &#10094;
+          </div>
+          <div className="next" tabIndex={0} onClick={forwardSlide}>
+            &#10095;
+          </div>
+        </>
+      )}
     </div>
   );
 };

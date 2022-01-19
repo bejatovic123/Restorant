@@ -1,0 +1,34 @@
+.profile-menu {
+  position: relative;
+  &:focus {
+    .profile-menu__options {
+      display: unset;
+    }
+  }
+  &__avatar {
+    border: 4px solid #dad8ca;
+    color: #dad8ca;
+    border-radius: 50%;
+    width: 80px;
+    aspect-ratio: 1;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    margin-top: 32px;
+    cursor: pointer;
+  }
+  &__options {
+    position: absolute;
+    width: 100%;
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    top: 120px;
+    text-align: center;
+    cursor: pointer;
+    display: none;
+  }
+}

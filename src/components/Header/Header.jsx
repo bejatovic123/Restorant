@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
+import { ThemeContext } from "../../App";
 import logo from "../../assets/logo.png";
+import { BurgerMenu } from "../BurgerMenu/BurgerMenu";
+import { ProfileMenu } from "../ProfileMenu/ProfileMenu";
+import HeaderNav from "../VanillaComponent/HeaderNav";
 
 export const Header = () => {
+  const [theme, changeTheme] = useContext(ThemeContext);
   const location = useLocation();
   const userName = useSelector((state) => state.user.name);
   const getActiveClass = (path) => (location.pathname === path ? "active" : "");
@@ -12,30 +17,14 @@ export const Header = () => {
       <Link to="/">
         <img className="header__logo" src={logo} alt="logo" />
       </Link>
-      <span>
-        <nav>
-          <Link to="/">
-            <span className={getActiveClass("/")}>Home</span>
-          </Link>
-          <Link to="/about">
-            <span className={getActiveClass("/about")}>About</span>
-          </Link>
-          <Link to="/contact">
-            <span className={getActiveClass("/contact")}>Contact</span>
-          </Link>
-          {!userName && (
-            <>
-              <Link to="/register">
-                <span className={getActiveClass("/register")}>Register</span>
-              </Link>
-              <Link to="/login">
-                <span className={getActiveClass("/login")}>Login</span>
-              </Link>
-            </>
-          )}
-        </nav>
-        {!!userName && <div>{userName[0]?.toUpperCase()}</div>}
+      <span className="header__right-section">
+        <button onClick={changeTheme}>
+          {theme === "black" ? "Light" : "Dark"} Mode
+        </button>
+        <HeaderNav {...{ userName, getActiveClass }} />
+        {!!userName && <ProfileMenu userName={userName} />}
       </span>
+      <BurgerMenu {...{ getActiveClass, userName }} />
     </header>
   );
 };

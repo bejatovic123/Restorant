@@ -1,9 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700;900&display=swap");
 @import "./colors.scss";
 @import "./global.scss";
-@import "../components/Counter/counter.scss";
 @import "../components/Footer/footer.scss";
+@import "../components/BurgerMenu/burgerMenu.scss";
 @import "../components/Header/header.scss";
+@import "../components/ProfileMenu/profileMenu.scss";
 @import "../containers/Layout/layout.scss";
 @import "../containers/Pages/home/home.scss";
 @import "../components/Slider/slider.scss";

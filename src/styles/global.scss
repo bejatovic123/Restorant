@@ -32,3 +32,10 @@ a {
 .display-unset {
   display: unset !important;
 }
+
+.loader {
+  position: fixed;
+  top: calc(50vh - 28px);
+  right: calc(50vw - 28px);
+  width: 57px;
+}

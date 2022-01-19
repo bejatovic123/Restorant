@@ -1,13 +1,16 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useContext } from "react";
 import { Outlet } from "react-router-dom";
-import { Footer } from "../../components/Footer/footer";
+import { Footer } from "../../components/Footer/Footer";
 import { Header } from "../../components/Header/Header";
 import mapImage from "../../assets/map.jpeg";
 import schedule from "../../assets/schedule.png";
 import cardImage from "../../assets/walcome_vanilla.jpeg";
 import { HomeCard } from "../../components/HomeCard/HomeCard";
+import { WithLoader } from "../WithLoader/WithLoader";
+import { ThemeContext, themes } from "../../App";
 
-export const Layout = () => {
+const Layout = () => {
+  const [theme] = useContext(ThemeContext);
   const pageBottomContent = [
     {
       heading: "Address",
@@ -30,13 +33,24 @@ export const Layout = () => {
 
   return (
     <>
-      <div className="layout">
+      <div
+        className="layout"
+        style={{
+          background: theme,
+          color: theme === themes.dark ? "white" : "unset",
+        }}
+      >
         <Header />
         <div className="layout_body pd-t-31 pd-b-8">
           <Suspense fallback={<div>loading...</div>}>
             <Outlet />
           </Suspense>
-          <div className="layout__bottom-content-wrapper">
+          <div
+            className="layout__bottom-content-wrapper"
+            style={{
+              background: theme,
+            }}
+          >
             {pageBottomContent.map((data, i) => (
               <HomeCard key={i} {...data} />
             ))}
@@ -47,3 +61,5 @@ export const Layout = () => {
     </>
   );
 };
+
+export default WithLoader(Layout);
