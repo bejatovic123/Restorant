@@ -1,48 +1,45 @@
-import React from "react";
-import { HomeCard } from "../../../components/HomeCard/HomeCard";
-import { Slider } from "../../../components/Slider/Slider";
-import cardImage from "../../../assets/walcome_vanilla.jpeg";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import { HomeCard } from '../../../components/HomeCard/HomeCard';
+import { Slider } from '../../../components/Slider/Slider';
+import cardImage from '../../../assets/drinks.jpg';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const navigate = useNavigate();
   const bodyContent = [
     {
-      heading: "Welcome to Vanilla",
+      heading: 'Welcome to Restaurant',
       image: cardImage,
       text: [
-        "Our philosophy is to provide a satisfying dining experience for all spectrum of tastes using modern, innovative and classic cooking techniques.",
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent et elementum diam. Duis luctus erat at quam lobortis ornare. Duis placerat augue accumsan eros tincidunt ultrices. Proin finibus mauris sed sem accumsan dictum.',
       ],
-      buttonText: "Read about us",
-      onButtonClick: () => navigate("/about"),
+      buttonText: 'Read about us',
+      onButtonClick: () => navigate('/about'),
     },
     {
-      heading: "Reserve a Table",
+      heading: 'Reserve a Table',
       image: cardImage,
       text: [
-        "We offer warm and relaxed dining in a contemporary setting, fused with traditional Ottoman architecture.",
-        "Vanilla is located in Antalya’s old city (Kaleiçi) within the ancient citadel walls, 5 minutes from Hadrian’s Gate.",
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent et elementum diam. Duis luctus erat at quam lobortis ornare. Duis placerat augue accumsan eros tincidunt ultrices. Proin finibus mauris sed sem accumsan dictum.',
       ],
-      buttonText: "Call and reserve a table",
-      onButtonClick: () => navigate("/contact"),
+      buttonText: 'Call and reserve a table',
+      onButtonClick: () => navigate('/contact'),
     },
     {
-      heading: "Our Menu",
+      heading: 'Our Menu',
       image: cardImage,
       text: [
-        "Vanilla is the perfect place to relax and enjoy the ambiance of the Old Town.",
-        "We look forward to welcoming you.",
-        "Come in and enjoy.",
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent et elementum diam. Duis luctus erat at quam lobortis ornare. Duis placerat augue accumsan eros tincidunt ultrices. Proin finibus mauris sed sem accumsan dictum.',
       ],
-      buttonText: "View our menu",
-      onButtonClick: () => navigate("/contact"),
+      buttonText: 'View our menu',
+      onButtonClick: () => navigate('/contact'),
     },
   ];
 
   return (
     <>
       <Slider />
-      <div className="home__cards-wrapper">
+      <div className='home__cards-wrapper'>
         {bodyContent.map((data, i) => (
           <HomeCard key={i} {...data} />
         ))}

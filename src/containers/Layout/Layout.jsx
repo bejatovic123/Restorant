@@ -1,32 +1,32 @@
-import React, { Suspense, useContext } from "react";
-import { Outlet } from "react-router-dom";
-import { Footer } from "../../components/Footer/Footer";
-import { Header } from "../../components/Header/Header";
-import mapImage from "../../assets/map.jpeg";
-import schedule from "../../assets/schedule.png";
-import cardImage from "../../assets/walcome_vanilla.jpeg";
-import { HomeCard } from "../../components/HomeCard/HomeCard";
-import { WithLoader } from "../WithLoader/WithLoader";
-import { ThemeContext, themes } from "../../App";
+import React, { Suspense, useContext } from 'react';
+import { Outlet } from 'react-router-dom';
+import { Footer } from '../../components/Footer/Footer';
+import { Header } from '../../components/Header/Header';
+import mapImage from '../../assets/map.jpg';
+import schedule from '../../assets/schedule.png';
+import cardImage from '../../assets/drinks.jpg';
+import { HomeCard } from '../../components/HomeCard/HomeCard';
+import { WithLoader } from '../WithLoader/WithLoader';
+import { ThemeContext, themes } from '../../App';
 
 const Layout = () => {
   const [theme] = useContext(ThemeContext);
   const pageBottomContent = [
     {
-      heading: "Address",
+      heading: 'Address',
       image: cardImage,
       text: [
-        "Any location, Earth",
-        "Phone: 03333333333",
-        "Email: any@mail.com",
+        'Lange Strasse 68, Baden-Baden Baden-Württemberg, 76530',
+        'Phone: Number',
+        'Email: Email',
       ],
     },
     {
-      heading: "Map & Contact",
+      heading: 'Map & Contact',
       image: mapImage,
     },
     {
-      heading: "Our Hours",
+      heading: 'Our Hours',
       image: schedule,
     },
   ];
@@ -34,19 +34,19 @@ const Layout = () => {
   return (
     <>
       <div
-        className="layout"
+        className='layout'
         style={{
           background: theme,
-          color: theme === themes.dark ? "white" : "unset",
+          color: theme === themes.dark ? 'white' : 'unset',
         }}
       >
         <Header />
-        <div className="layout_body pd-t-31 pd-b-8">
+        <div className='layout_body pd-t-31 pd-b-8'>
           <Suspense fallback={<div>loading...</div>}>
             <Outlet />
           </Suspense>
           <div
-            className="layout__bottom-content-wrapper"
+            className='layout__bottom-content-wrapper'
             style={{
               background: theme,
             }}

@@ -1,6 +1,8 @@
 import React, { useCallback, useEffect, useState } from "react";
-import banner from "../../assets/banner.jpeg";
-import banner2 from "../../assets/banner2.jpeg";
+import banner1 from "../../assets/restaurant.jpeg";
+import banner2 from "../../assets/res2.jpeg";
+import banner3 from "../../assets/drink.jpeg";
+import banner4 from "../../assets/food.jpeg";
 import PropTypes from "prop-types";
 
 const Slide = ({ image, currentSlideIndex, myIndex }) => {
@@ -16,7 +18,7 @@ const Slide = ({ image, currentSlideIndex, myIndex }) => {
 };
 
 export const Slider = ({
-  slides = [banner, banner2],
+  slides = [banner1, banner2, banner3, banner4],
   autoSlide = true,
   slideIntervale = 5000,
 }) => {
