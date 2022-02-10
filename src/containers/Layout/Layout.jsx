@@ -41,7 +41,7 @@ const Layout = () => {
         }}
       >
         <Header />
-        <div className='layout_body pd-t-31 pd-b-8'>
+        <div className='layout_body '>
           <Suspense fallback={<div>loading...</div>}>
             <Outlet />
           </Suspense>
