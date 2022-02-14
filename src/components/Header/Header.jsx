@@ -5,7 +5,7 @@ import { ThemeContext } from '../../App';
 import logo from '../../assets/logo.png';
 import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
 import { ProfileMenu } from '../ProfileMenu/ProfileMenu';
-import HeaderNav from '../VanillaComponent/HeaderNav';
+import HeaderNav from '../NavH/HeaderNav';
 
 export const Header = () => {
   const [theme, changeTheme] = useContext(ThemeContext);
