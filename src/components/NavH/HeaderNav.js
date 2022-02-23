@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+/*eslint-disable react/prop-types*/
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -14,6 +14,12 @@ const HeaderNav = (props) => {
       <Link to='/contact'>
         <span className={props.getActiveClass('/contact')}>Contact</span>
       </Link>
+      {!!props.userName && (
+        <Link to='/menu'>
+          <span className={props.getActiveClass('/menu')}>Menu</span>
+        </Link>
+      )}
+
       {!props.userName && (
         <>
           <Link to='/register'>

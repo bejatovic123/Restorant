@@ -27,7 +27,7 @@ export const Slider = ({
   const forwardSlide = useCallback(() => {
     if (currentSlideIndex === slides.length - 1) return setCurrentSlideIndex(0);
     setCurrentSlideIndex(currentSlideIndex + 1);
-  }, [currentSlideIndex, slides]);
+  }, [currentSlideIndex ,slides]);
 
   const backwardSlide = () => {
     if (!currentSlideIndex) return setCurrentSlideIndex(slides.length - 1);

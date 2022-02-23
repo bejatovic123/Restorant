@@ -13,9 +13,12 @@ const Login = () => {
         onSubmit={(e) => {
           e.preventDefault();
           dispatch(setUser(e.target[0].value));
+          
           e.target[0].value && navigate("/");
+          
         }}
       >
+        
         <div className="login-page__input-group">
           <label>Username:</label>
           <input type="text" />

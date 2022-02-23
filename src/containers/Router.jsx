@@ -7,6 +7,7 @@ const ContactPage = lazy(() => import("./Pages/contact/Contact"));
 const AboutPage = lazy(() => import("./Pages/about/About"));
 const LoginPage = lazy(() => import("./Pages/login/Login"));
 const RegisterPage = lazy(() => import("./Pages/register/Register"));
+const MenuPage = lazy(() => import("./Pages/Menu/Menu"));
 
 const AppRouter = () => {
   return (
@@ -18,6 +19,7 @@ const AppRouter = () => {
           <Route path="contact" element={<ContactPage />} />
           <Route path="login" element={<LoginPage />} />
           <Route path="register" element={<RegisterPage />} />
+          <Route path="menu" element={<MenuPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
