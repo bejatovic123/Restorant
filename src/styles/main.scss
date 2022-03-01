@@ -13,4 +13,12 @@
 @import '../containers/Pages/contact/contact.scss';
 @import '../containers/Pages/login/login.scss';
 @import '../containers/Pages/register/register.scss';
-@import '../containers/Pages/Menu/menu.scss';
+@import '../components/NavH/cart.scss';
+@import '../components/Cart/Cart.module.scss';
+@import '../components/Cart/CartItem.scss';
+@import '../components/UI/Card.module.scss';
+@import '../components/UI/Modal.module.scss';
+@import '../components/Meals/AvailableMeals.module.scss';
+@import '../components/Meals/MealsSummary.module.scss';
+@import '../components/Meals/MealItem/MealItem.module.scss';
+@import '../components/Meals/MealItem/MealItemForm.module.scss';

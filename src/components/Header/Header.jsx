@@ -6,8 +6,11 @@ import logo from '../../assets/logo.png';
 import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
 import { ProfileMenu } from '../ProfileMenu/ProfileMenu';
 import HeaderNav from '../NavH/HeaderNav';
+import { CartToggle } from '../../App';
 
 export const Header = () => {
+  const [cartIsShown, showCartHandler] = useContext(CartToggle);
+  console.log('cartIsShown ', cartIsShown);
   const [theme, changeTheme] = useContext(ThemeContext);
   const location = useLocation();
   const userName = useSelector((state) => state.user.name);
@@ -21,7 +24,10 @@ export const Header = () => {
         <button onClick={changeTheme}>
           {theme === 'black' ? 'Light' : 'Dark'} Mode
         </button>
-        <HeaderNav {...{ userName, getActiveClass }} />
+        <HeaderNav
+          onShowCart={showCartHandler}
+          {...{ userName, getActiveClass }}
+        />
         {!!userName && <ProfileMenu userName={userName} />}
       </span>
       <BurgerMenu {...{ getActiveClass, userName }} />
