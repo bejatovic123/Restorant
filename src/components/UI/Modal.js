@@ -1,6 +1,6 @@
 /*eslint-disable react/prop-types*/
 import React from 'react';
-import { Fragment } from 'react';
+
 import ReactDOM from 'react-dom';
 
 const Backdrop = (props) => {
@@ -19,16 +19,16 @@ const portalElement = document.getElementById('overlays');
 
 const Modal = (props) => {
   return (
-    <Fragment>
+    <>
       {ReactDOM.createPortal(
         <Backdrop onClose={props.onClose} />,
-        portalElement,
+        portalElement
       )}
       {ReactDOM.createPortal(
         <ModalOverlay>{props.children}</ModalOverlay>,
-        portalElement,
+        portalElement
       )}
-    </Fragment>
+    </>
   );
 };
 

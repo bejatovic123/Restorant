@@ -1,10 +1,12 @@
+const poly = require('@babel/polyfill');
+
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.js', // bundle's entry point
+  entry: [{ poly }, './src/index.js'], // bundle's entry point
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',

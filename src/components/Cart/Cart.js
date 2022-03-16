@@ -1,13 +1,17 @@
 /*eslint-disable react/prop-types*/
 
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 
 import Modal from '../UI/Modal';
 import CartItem from './CartItem';
-
 import CartContext from '../../store/cart-context';
+import Checkout from './Checkout';
 
 export const Cart = (props) => {
+  const [isCheckout, setIsCheckout] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [didSubmit, setDidSubmit] = useState(false);
+
   const cartCtx = useContext(CartContext);
 
   const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
@@ -19,6 +23,28 @@ export const Cart = (props) => {
 
   const cartItemAddHandler = (item) => {
     cartCtx.addItem({ ...item, amount: 1 });
+  };
+
+  const orderHandler = () => {
+    setIsCheckout(true);
+  };
+
+  const submitOrderHandler = async (userData) => {
+    setIsSubmitting(true);
+    await fetch(
+      'https://meals-a51f1-default-rtdb.europe-west1.firebasedatabase.app/orders.json',
+
+      {
+        method: 'POST',
+        body: JSON.stringify({
+          user: userData,
+          orderedItems: cartCtx.items,
+        }),
+      }
+    );
+    setIsSubmitting(false);
+    setDidSubmit(true);
+    cartCtx.clearCart();
   };
 
   const cartItems = (
@@ -36,17 +62,41 @@ export const Cart = (props) => {
     </ul>
   );
 
-  return (
-    <Modal onClose={props.onClose}>
+  const modalActions = (
+    <div className='Modal__action'>
+      <button onClick={props.onClose}>Close</button>
+      {hasItems && (
+        <button className='Modal__button' onClick={orderHandler}>
+          Order
+        </button>
+      )}
+    </div>
+  );
+
+  const isSumbittingModalContent = <p>Sending Order Data ...</p>;
+
+  const cartModalContent = (
+    <>
       {cartItems}
       <div className='Modal__total'>
         <span>Total Amount</span>
         <span>{totalAmount}</span>
       </div>
-      <div className='Modal__action'>
-        <button onClick={props.onClose}>Close</button>
-        {hasItems && <button className='Modal__button'>Order</button>}
-      </div>
+      
+      {isCheckout && (
+        <Checkout onConfirm={submitOrderHandler} onCancel={props.onClose} />
+      )}
+      {!isCheckout && modalActions}
+    </>
+  );
+
+  const didSubmitModalContent = <p>Successfully sent the order!</p>;
+
+  return (
+    <Modal onClose={props.onClose}>
+      {!isSubmitting && !didSubmit && cartModalContent}
+      {isSubmitting && isSumbittingModalContent}
+      {!isSubmitting && didSubmit && didSubmitModalContent}
     </Modal>
   );
 };
